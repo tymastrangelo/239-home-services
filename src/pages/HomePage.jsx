@@ -1,0 +1,304 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import Button from "../components/ui/Button";
+import { FaArrowRight, FaHome, FaKey, FaClipboardList, FaCheckCircle, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+
+// Placeholder for a beautiful local image
+import heroImage from "../assets/naples-hero.jpg";
+import aboutImage from "../assets/about-us-image.jpg"; // Add a new image for this section
+
+const HeroSection = () => {
+  return (
+    <section
+      className="relative text-white bg-cover bg-center flex items-center min-h-screen"
+      style={{
+        backgroundImage: `url(${heroImage})`,
+      }}
+    >
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-brand-primary bg-opacity-60"></div>
+
+      <div
+        className="relative w-full mx-auto max-w-screen-xl px-6 lg:px-8 flex flex-col items-center text-center -mt-16"
+        // A negative top margin pulls the content up to visually center it in the viewport, accounting for the header's height.
+      >
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-bold font-serif leading-tight mb-4 max-w-4xl"
+        >
+          Trusted Home Watch & Concierge Services for Peace of Mind
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-lg md:text-xl mb-8 max-w-3xl"
+        >
+          Serving Naples & Marco Island, we are your eyes and ears when you’re
+          away, ensuring your home is secure and cared for.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <Button
+            href="#contact"
+            size="lg"
+            variant="accent"
+            className="flex items-center group"
+          >
+            Request a Consultation
+            <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const HomeAboutSection = () => {
+  return (
+    <section id="about" className="py-20 lg:py-28 bg-gray-50">
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-8">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ amount: 0.3 }}
+            transition={{ duration: 0.7 }}
+            className="rounded-lg overflow-hidden shadow-xl"
+          >
+            <img src={aboutImage} alt="A well-maintained home in Naples, Florida" className="w-full h-full object-cover" />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ amount: 0.3 }}
+            transition={{ duration: 0.7 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-6">
+              Your Trusted Partner in Home Watch
+            </h2>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              As residents of Southwest Florida, we understand the unique needs of homeowners in Naples and Marco Island. Our mission is to be your eyes and ears, providing meticulous and professional home watch services so you can relax, knowing your home is in capable hands.
+            </p>
+            <Button href="/about" size="lg" variant="primary" className="flex items-center group">
+              Learn More About Us
+              <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ServicesSection = () => {
+  // Show a summary of top services on the homepage
+  const topServices = [
+    {
+      icon: <FaHome className="text-3xl text-brand-accent" />,
+      title: "Comprehensive Home Watch",
+      description: "Scheduled interior and exterior checks with detailed digital reports after every visit."
+    },
+    {
+      icon: <FaKey className="text-3xl text-brand-accent" />,
+      title: "Keyholder Services",
+      description: "Secure and reliable keyholding for vendor access, emergencies, or guest arrivals."
+    },
+    {
+      icon: <FaClipboardList className="text-3xl text-brand-accent" />,
+      title: "Vendor Management",
+      description: "We coordinate and oversee service providers like pool maintenance, landscapers, and pest control."
+    }
+  ];
+
+  return (
+    <section id="services" className="py-20 lg:py-28 bg-white">
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-8 text-center">
+        <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-4">
+          Our Services
+        </motion.h2>
+        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto mb-12">
+          We offer a comprehensive suite of services designed to give you complete peace of mind while you're away from your home.
+        </motion.p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {topServices.map((service, index) => (
+            <motion.div key={index} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-3 transition-all duration-300 text-left">
+              <div className="mb-4">{service.icon}</div>
+              <h3 className="text-xl font-bold text-brand-primary mb-3">{service.title}</h3>
+              <p className="text-gray-600 leading-relaxed">{service.description}</p>
+            </motion.div>
+          ))}
+        </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="flex justify-center">
+          <Button href="/services" size="lg" variant="primary" className="flex items-center group">
+            View All Services
+            <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const PricingSection = () => {
+  const popularPlan = {
+    name: 'Premium Watch',
+    price: 'Starting at $50',
+    frequency: 'per visit',
+    description: 'Our most popular plan for comprehensive weekly oversight.',
+    features: [
+      'Weekly interior/exterior checks',
+      'Detailed digital report with photos',
+      'Full systems check (HVAC, plumbing)',
+      'Vendor management access',
+    ],
+    popular: true,
+  };
+
+  return (
+    <section id="pricing" className="py-20 lg:py-28 bg-gray-50">
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-4">
+            Find Your Perfect Plan
+          </motion.h2>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto">
+            We offer straightforward pricing to fit your needs, ensuring your home is always protected.
+          </motion.p>
+        </div>
+        <div className="grid lg:grid-cols-3 gap-8 items-center">
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="lg:col-span-1 text-center lg:text-left">
+            <h3 className="text-2xl font-bold text-brand-primary mb-4">Transparent & Flexible</h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Every home is unique. We start with our standard plans and can create a custom package tailored to your specific property and requirements. Contact us for a personalized consultation.
+            </p>
+            <Button href="/pricing" size="lg" variant="primary" className="flex items-center group mx-auto lg:mx-0">
+              View All Pricing Plans
+              <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+            </Button>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="lg:col-span-2 relative border-2 border-brand-accent bg-white rounded-xl p-8 shadow-2xl">
+            <div className="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-brand-accent text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</div>
+            <h3 className="text-2xl font-bold text-brand-primary mb-2">{popularPlan.name}</h3>
+            <p className="text-gray-500 mb-6">{popularPlan.description}</p>
+            <div className="text-4xl font-bold text-gray-800 mb-6">{popularPlan.price} <span className="text-lg font-normal text-gray-500">{popularPlan.frequency}</span></div>
+            <ul className="space-y-4 text-gray-600 mb-8 text-left max-w-md mx-auto">
+              {popularPlan.features.map((feature, i) => ( <li key={i} className="flex items-start"><FaCheckCircle className="text-brand-accent mr-3 mt-1 flex-shrink-0" /><span>{feature}</span></li> ))}
+            </ul>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({ ...prevState, [name]: value }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // In a real application, you would send this data to a backend or email service.
+    console.log('Form submitted:', formData);
+    alert('Thank you for your message! We will get back to you shortly.');
+    setFormData({ name: '', email: '', phone: '', message: '' }); // Reset form
+  };
+
+  const inputStyles = "w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-colors duration-300 outline-none";
+
+  return (
+    <section id="contact" className="py-20 lg:py-28 bg-white">
+      <div className="mx-auto max-w-screen-xl px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-4">
+            Get In Touch
+          </motion.h2>
+          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto">
+            Ready to secure your peace of mind? Contact us today for a free, no-obligation consultation.
+          </motion.p>
+        </div>
+
+        <div className="grid lg:grid-cols-5 gap-16 items-start">
+          {/* Left Column: Contact Info */}
+          <motion.div initial={{ opacity: 0, x: -50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="lg:col-span-2">
+            <h3 className="text-2xl font-bold text-brand-primary mb-4">Contact Information</h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Fill out the form and our team will get back to you within 24 hours. For immediate assistance, please call us.
+            </p>
+            <ul className="space-y-6 text-gray-700">
+              <li className="flex items-center gap-4">
+                <FaPhone className="text-brand-accent text-xl" />
+                <a href="tel:+2392930683" className="hover:text-brand-accent transition-colors">(239) 293-0683</a>
+              </li>
+              <li className="flex items-center gap-4">
+                <FaEnvelope className="text-brand-accent text-xl" />
+                <a href="mailto:contact@239homeservices.com" className="hover:text-brand-accent transition-colors">contact@239homeservices.com</a>
+              </li>
+              <li className="flex items-center gap-4">
+                <FaMapMarkerAlt className="text-brand-accent text-xl" />
+                <span>Naples & Marco Island, FL</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Right Column: Form */}
+          <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="lg:col-span-3 bg-gray-50 p-8 rounded-xl shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="sr-only">Name</label>
+                  <input type="text" name="name" id="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required className={inputStyles} />
+                </div>
+                <div>
+                  <label htmlFor="email" className="sr-only">Email</label>
+                  <input type="email" name="email" id="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required className={inputStyles} />
+                </div>
+              </div>
+              <div>
+                <label htmlFor="phone" className="sr-only">Phone (Optional)</label>
+                <input type="tel" name="phone" id="phone" placeholder="Your Phone (Optional)" value={formData.phone} onChange={handleChange} className={inputStyles} />
+              </div>
+              <div>
+                <label htmlFor="message" className="sr-only">Message</label>
+                <textarea name="message" id="message" placeholder="How can we help?" value={formData.message} onChange={handleChange} required rows="5" className={inputStyles}></textarea>
+              </div>
+              <div>
+                <Button type="submit" variant="accent" size="lg" className="w-full justify-center">
+                  Send Message
+                </Button>
+              </div>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const HomePage = () => {
+  return (
+    <div>
+      <HeroSection />
+      <HomeAboutSection />
+      <ServicesSection />
+      <PricingSection />
+      <ContactSection />
+    </div>
+  );
+};
+
+export default HomePage;
