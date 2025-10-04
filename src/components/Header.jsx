@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from "react"; // Keep useEffect for body scroll lock
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+const navItems = [
+  { name: 'About', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Pricing', path: '/pricing' },
+  { name: 'Contact', path: '/#contact' },
+];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -49,18 +57,18 @@ const Header = () => {
         <nav
           className="mx-auto max-w-screen-xl px-6 lg:px-8 py-3 flex justify-between items-center"
         >
-          <a href="/" className="font-bold text-2xl text-white">
+          <Link to="/" className="font-bold text-2xl text-white">
             239 Home Services
-          </a>
+          </Link>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {['About', 'Services', 'Pricing', 'Contact'].map(item => (
-              <a 
-                key={item} href={['About', 'Services', 'Pricing'].includes(item) ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`} 
+            {navItems.map((item) => (
+              <Link 
+                key={item.name} to={item.path} 
                 className="font-semibold text-white hover:text-brand-accent transition-colors duration-300"
               >
-                {item}
-              </a>
+                {item.name}
+              </Link>
             ))}
           </div>
           {/* Mobile Menu Button */}
@@ -85,15 +93,15 @@ const Header = () => {
         </button>
       </div>
       <nav className="flex flex-col items-center justify-center h-full -mt-16 space-y-8">
-        {['About', 'Services', 'Pricing', 'Contact'].map(item => (
-          <a
-            key={item}
-            href={['About', 'Services', 'Pricing'].includes(item) ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`}
+        {navItems.map((item) => (
+          <Link
+            key={item.name}
+            to={item.path}
             onClick={() => setIsMenuOpen(false)} // Close menu on link click
             className="text-white text-3xl font-semibold hover:text-brand-accent"
           >
-            {item}
-          </a>
+            {item.name}
+          </Link>
         ))}
       </nav>
     </div>

@@ -1,8 +1,14 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-  const navLinks = ['About', 'Services', 'Pricing', 'Contact'];
+  const navItems = [
+    { name: 'About', path: '/about' },
+    { name: 'Services', path: '/services' },
+    { name: 'Pricing', path: '/pricing' },
+    { name: 'Contact', path: '/#contact' },
+  ];
 
   return (
     <footer className="bg-brand-primary text-white">
@@ -18,11 +24,11 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {navLinks.map(item => (
-                <li key={item}>
-                  <a href={['About', 'Services', 'Pricing'].includes(item) ? `/${item.toLowerCase()}` : `/#${item.toLowerCase()}`} className="text-blue-100 hover:text-brand-accent transition-colors">
-                    {item}
-                  </a>
+              {navItems.map(item => (
+                <li key={item.name}>
+                  <Link to={item.path} className="text-blue-100 hover:text-brand-accent transition-colors">
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>

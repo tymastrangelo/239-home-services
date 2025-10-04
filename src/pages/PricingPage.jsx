@@ -75,7 +75,7 @@ const PricingCard = ({ plan, index }) => (
         </li>
       ))}
     </ul>
-    <Button href="/#contact" variant={plan.popular ? 'accent' : 'primary'} className="w-full justify-center">
+    <Button to="/#contact" variant={plan.popular ? 'accent' : 'primary'} className="w-full justify-center">
       {plan.price === 'Custom Quote' ? 'Request a Quote' : 'Choose Plan'}
     </Button>
   </motion.div>

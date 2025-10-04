@@ -1,43 +1,40 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Button = ({
-  children,
+  to,
   href,
   onClick,
+  children,
   variant = 'primary',
   size = 'md',
   className = '',
+  type = 'button',
   ...props
 }) => {
-  const baseStyles = 'inline-block font-bold rounded-md transition-all duration-300 transform hover:scale-105';
-
-  const sizeStyles = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-5 py-2.5 text-base',
-    lg: 'px-8 py-3 text-lg',
-  };
+  const baseStyles = 'inline-block font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
   const variantStyles = {
-    primary: 'bg-brand-primary text-white hover:bg-opacity-90',
-    secondary: 'bg-brand-secondary text-brand-primary hover:bg-opacity-90',
-    accent: 'bg-brand-accent text-brand-primary hover:bg-yellow-400',
+    primary: 'bg-brand-primary text-white hover:bg-blue-700 focus:ring-brand-primary',
+    accent: 'bg-brand-accent text-white hover:bg-yellow-500 focus:ring-brand-accent',
   };
 
-  const combinedClassName = `${baseStyles} ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
+  const sizeStyles = {
+    md: 'px-5 py-2.5 text-sm',
+    lg: 'px-6 py-3 text-base',
+  };
 
-  if (href) {
-    return (
-      <a href={href} className={combinedClassName} {...props}>
-        {children}
-      </a>
-    );
+  const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;
+
+  if (to) {
+    return <Link to={to} className={combinedClassName} {...props}>{children}</Link>;
   }
 
-  return (
-    <button onClick={onClick} className={combinedClassName} {...props}>
-      {children}
-    </button>
-  );
+  if (href) {
+    return <a href={href} className={combinedClassName} {...props}>{children}</a>;
+  }
+
+  return <button type={type} onClick={onClick} className={combinedClassName} {...props}>{children}</button>;
 };
 
 export default Button;

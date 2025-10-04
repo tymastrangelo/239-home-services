@@ -45,7 +45,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <Button
-            href="#contact"
+            to="/#contact"
             size="lg"
             variant="accent"
             className="flex items-center group"
@@ -85,7 +85,7 @@ const HomeAboutSection = () => {
             <p className="text-gray-600 mb-8 leading-relaxed">
               As residents of Southwest Florida, we understand the unique needs of homeowners in Naples and Marco Island. Our mission is to be your eyes and ears, providing meticulous and professional home watch services so you can relax, knowing your home is in capable hands.
             </p>
-            <Button href="/about" size="lg" variant="primary" className="flex items-center group">
+            <Button to="/about" size="lg" variant="primary" className="flex items-center group">
               Learn More About Us
               <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -135,7 +135,7 @@ const ServicesSection = () => {
           ))}
         </div>
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="flex justify-center">
-          <Button href="/services" size="lg" variant="primary" className="flex items-center group">
+          <Button to="/services" size="lg" variant="primary" className="flex items-center group">
             View All Services
             <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
           </Button>
@@ -177,7 +177,7 @@ const PricingSection = () => {
             <p className="text-gray-600 mb-8 leading-relaxed">
               Every home is unique. We start with our standard plans and can create a custom package tailored to your specific property and requirements. Contact us for a personalized consultation.
             </p>
-            <Button href="/pricing" size="lg" variant="primary" className="flex items-center group mx-auto lg:mx-0">
+            <Button to="/pricing" size="lg" variant="primary" className="flex items-center group mx-auto lg:mx-0">
               View All Pricing Plans
               <FaArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
             </Button>
