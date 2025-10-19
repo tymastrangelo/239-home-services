@@ -40,36 +40,50 @@ jobs:
           publish_dir: ./dist
           publish_branch: gh-pages
 
-      - name: Ensure GitHub Pages source is set to gh-pages
+      - name: Ensure GitHub Pages source is set to gh-pages (try PAT then token)
         run: |
-          echo "Setting Pages source to gh-pages via GitHub API"
+          echo "Attempting to set Pages source to gh-pages via GitHub API"
+          if [ -n "${{ secrets.GH_PAGES_PAT }}" ]; then
+            echo "Using GH_PAGES_PAT secret"
+            TOKEN="${{ secrets.GH_PAGES_PAT }}"
+          else
+            echo "GH_PAGES_PAT not provided; falling back to GITHUB_TOKEN (may be restricted)"
+            TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          fi
           resp=$(curl -s -o /tmp/pages_resp -w "%{http_code}" -X PUT \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: Bearer $TOKEN" \
             https://api.github.com/repos/${{ github.repository }}/pages \
             -d '{"source":{"branch":"gh-pages","path":"/"}}')
           echo "GitHub API response code: $resp"
           if [ "$resp" -ge 400 ]; then
-            echo "Failed to set Pages source. Dumping response:"; cat /tmp/pages_resp; exit 1
+            echo "Could not set Pages source (HTTP $resp). Dumping response and continuing to fallback."
+            cat /tmp/pages_resp || true
+          else
+            echo "Pages source set or already configured."
           fi
-          echo "Pages source set or already configured."
 
       - name: Fallback publish to main root (overwrite index.html and assets)
         if: always()
         run: |
           echo "Publishing dist to main branch root as fallback"
-          # Checkout main branch with credentials persisted by actions/checkout earlier
+          # Checkout main branch (credentials persisted by actions/checkout earlier)
           git fetch origin main
           git checkout main
+          # Configure git identity so commits succeed in the runner
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git config user.name "${{ github.actor }}"
           # Remove only index.html and assets/ to avoid touching other repo files
           git rm -f index.html || true
           git rm -rf assets || true
           # Copy dist output into repo root
           cp -r ./dist/* ./
+          # Stage changes
           git add index.html assets || true
           if git diff --staged --quiet; then
             echo "No changes to main branch root needed"
           else
             git commit -m "chore(ci): publish built site to main root (fallback)"
+            echo "Pushing updates to origin/main"
             git push origin main
           fi
