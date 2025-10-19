@@ -38,8 +38,8 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-2 text-blue-100">
-              <li className="flex items-center justify-center md:justify-start gap-2"><FaPhone /><a href="tel:+1234567890" className="hover:text-brand-accent">(123) 456-7890</a></li>
-              <li className="flex items-center justify-center md:justify-start gap-2"><FaEnvelope /><a href="mailto:contact@239homeservices.com" className="hover:text-brand-accent">contact@239homeservices.com</a></li>
+              <li className="flex items-center justify-center md:justify-start gap-2"><FaPhone /><a href="tel:+2395722025" className="hover:text-brand-accent">(239) 572-2025</a></li>
+              <li className="flex items-center justify-center md:justify-start gap-2"><FaEnvelope /><a href="mailto:239homeservices@gmail.com" className="hover:text-brand-accent">239homeservices@gmail.com</a></li>
             </ul>
             <div className="flex justify-center md:justify-start space-x-4 mt-6">
               <a href="#" aria-label="Facebook" className="text-2xl text-blue-100 hover:text-brand-accent"><FaFacebook /></a>

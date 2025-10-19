@@ -242,11 +242,11 @@ const ContactSection = () => {
             <ul className="space-y-6 text-gray-700">
               <li className="flex items-center gap-4">
                 <FaPhone className="text-brand-accent text-xl" />
-                <a href="tel:+1234567890" className="hover:text-brand-accent transition-colors">(123) 456-7890</a>
+                <a href="tel:+2395722025" className="hover:text-brand-accent transition-colors">(239) 572-2025</a>
               </li>
               <li className="flex items-center gap-4">
                 <FaEnvelope className="text-brand-accent text-xl" />
-                <a href="mailto:contact@239homeservices.com" className="hover:text-brand-accent transition-colors">contact@239homeservices.com</a>
+                <a href="mailto:239homeservices@gmail.com" className="hover:text-brand-accent transition-colors">239homeservices@gmail.com</a>
               </li>
               <li className="flex items-center gap-4">
                 <FaMapMarkerAlt className="text-brand-accent text-xl" />
