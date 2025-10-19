@@ -4,6 +4,12 @@ on:
   push:
     branches: [ main ]
 
+# Give the workflow the permissions it needs to push to the repository
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -11,6 +17,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # ensure the token (GITHUB_TOKEN) is available to push from later steps
+          persist-credentials: true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
