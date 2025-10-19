@@ -5,7 +5,8 @@ import { FaArrowRight, FaHome, FaKey, FaClipboardList, FaCheckCircle, FaPhone, F
 
 // Placeholder for a beautiful local image
 import heroImage from "../assets/marco-hero.jpg";
-import aboutImage from "../assets/logo/logo-1920x1080.png"; // use logo in place of random people image
+// The logo file lives at src/assets/logo/logo-1920x1080.png
+import aboutImage from "../assets/logo/logo-1920x1080.png";
 
 const HeroSection = () => {
   return (

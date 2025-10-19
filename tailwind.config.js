@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: "#002349", // Dark Blue
-          secondary: "#E0F7FA", // Light Coastal Blue
-          accent: "#FFC107",    // A warm accent color
+          primary: "#013A63", // Slightly fresher dark blue
+          secondary: "#E8F6F9", // Even lighter coastal blue
+          accent: "#FFB020",    // Warm accent
         },
       },
       fontFamily: {

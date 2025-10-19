@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 
 // You can use the same hero image or a different one for this page
 import aboutHeroImage from "../assets/marco-hero.jpg"; 
+// Use the bundled logo image for the about page content
 import aboutContentImage from "../assets/logo/logo-1920x1080.png";
 
 const AboutPage = () => {

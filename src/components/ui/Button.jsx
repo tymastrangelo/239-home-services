@@ -15,8 +15,8 @@ const Button = ({
   const baseStyles = 'inline-block font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
   const variantStyles = {
-    primary: 'bg-brand-primary text-white hover:bg-blue-700 focus:ring-brand-primary',
-    accent: 'bg-brand-accent text-white hover:bg-yellow-500 focus:ring-brand-accent',
+    primary: 'bg-brand-primary text-white hover:bg-[#063a6b] focus:ring-brand-primary shadow-md',
+    accent: 'bg-brand-accent text-white hover:bg-[#e89c00] focus:ring-brand-accent shadow-md',
   };
 
   const sizeStyles = {

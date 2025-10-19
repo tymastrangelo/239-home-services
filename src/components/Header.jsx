@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react"; // Keep useEffect for body scroll lock
+// Import logo asset so Vite can resolve it during dev (enables HMR)
+import logoImg from "../assets/logo/logo-1920x1080.png";
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -57,8 +59,8 @@ const Header = () => {
         <nav
           className="mx-auto max-w-screen-xl px-6 lg:px-8 py-3 flex justify-between items-center"
         >
-          <Link to="/" className="font-bold text-2xl text-white">
-            239 Home Services
+          <Link to="/" className="flex items-center gap-4">
+            <span className="font-bold text-2xl text-white">239 Home Services</span>
           </Link>
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
