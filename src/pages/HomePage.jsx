@@ -204,6 +204,9 @@ const ContactSection = () => {
     phone: '',
     message: '',
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  const [submitSuccess, setSubmitSuccess] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -212,10 +215,40 @@ const ContactSection = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send this data to a backend or email service.
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you shortly.');
-    setFormData({ name: '', email: '', phone: '', message: '' }); // Reset form
+    // Send form data to n8n webhook
+    (async () => {
+      try {
+        setSubmitting(true);
+        setSubmitError('');
+        const payload = {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          submittedAt: new Date().toISOString(),
+          source: window.location.href
+        };
+
+        const res = await fetch('https://n8n.tymastrangelo.com/webhook/45b84bea-6bac-4c03-8894-551f7ce7a7c3', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          const text = await res.text().catch(() => '');
+          throw new Error(`Request failed (${res.status}) ${text}`);
+        }
+
+        setSubmitSuccess('Thanks — your message was sent. We will get back to you shortly.');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } catch (err) {
+        console.error('Contact form submit error', err);
+        setSubmitError('There was a problem sending your message. Please try again later.');
+      } finally {
+        setSubmitting(false);
+      }
+    })();
   };
 
   const inputStyles = "w-full px-4 py-3 bg-gray-100 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-colors duration-300 outline-none";
@@ -257,6 +290,17 @@ const ContactSection = () => {
 
           {/* Right Column: Form */}
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="lg:col-span-3 bg-gray-50 p-8 rounded-xl shadow-lg">
+            {submitSuccess && (
+              <div className="rounded-md bg-green-50 p-4 mb-4">
+                <p className="text-green-800">{submitSuccess}</p>
+              </div>
+            )}
+            {submitError && (
+              <div className="rounded-md bg-red-50 p-4 mb-4">
+                <p className="text-red-800">{submitError}</p>
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -277,8 +321,8 @@ const ContactSection = () => {
                 <textarea name="message" id="message" placeholder="How can we help?" value={formData.message} onChange={handleChange} required rows="5" className={inputStyles}></textarea>
               </div>
               <div>
-                <Button type="submit" variant="accent" size="lg" className="w-full justify-center">
-                  Send Message
+                <Button type="submit" variant="accent" size="lg" className="w-full justify-center" disabled={submitting}>
+                  {submitting ? 'Sending...' : 'Send Message'}
                 </Button>
               </div>
             </form>
