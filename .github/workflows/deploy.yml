@@ -39,3 +39,37 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
+
+      - name: Ensure GitHub Pages source is set to gh-pages
+        run: |
+          echo "Setting Pages source to gh-pages via GitHub API"
+          resp=$(curl -s -o /tmp/pages_resp -w "%{http_code}" -X PUT \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/pages \
+            -d '{"source":{"branch":"gh-pages","path":"/"}}')
+          echo "GitHub API response code: $resp"
+          if [ "$resp" -ge 400 ]; then
+            echo "Failed to set Pages source. Dumping response:"; cat /tmp/pages_resp; exit 1
+          fi
+          echo "Pages source set or already configured."
+
+      - name: Fallback publish to main root (overwrite index.html and assets)
+        if: always()
+        run: |
+          echo "Publishing dist to main branch root as fallback"
+          # Checkout main branch with credentials persisted by actions/checkout earlier
+          git fetch origin main
+          git checkout main
+          # Remove only index.html and assets/ to avoid touching other repo files
+          git rm -f index.html || true
+          git rm -rf assets || true
+          # Copy dist output into repo root
+          cp -r ./dist/* ./
+          git add index.html assets || true
+          if git diff --staged --quiet; then
+            echo "No changes to main branch root needed"
+          else
+            git commit -m "chore(ci): publish built site to main root (fallback)"
+            git push origin main
+          fi
