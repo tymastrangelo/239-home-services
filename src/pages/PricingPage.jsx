@@ -2,47 +2,43 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FaCheckCircle } from 'react-icons/fa';
 import Button from '../components/ui/Button';
-import pricingHeroImage from '../assets/naples-hero.jpg';
+import pricingHeroImage from '../assets/marco-hero.jpg';
 
 const pricingPlans = [
   {
     name: 'Basic Watch',
-    price: 'Starting at $40',
+    price: 'Starting at $75 per visit',
     frequency: 'per visit',
-    description: 'Ideal for regular, bi-weekly peace of mind.',
+    description: 'Ideal for regular monthly peace of mind',
     features: [
-      'Bi-weekly interior/exterior checks',
-      'Digital report with photos',
-      'Basic systems check',
-      'Mail & package collection',
+      'Monthly interior/exterior checks',
+      'Report with photos',
+      'Basic Systems Check',
     ],
     popular: false,
   },
   {
     name: 'Premium Watch',
-    price: 'Starting at $50',
+    price: 'Starting at $50 per visit',
     frequency: 'per visit',
-    description: 'Our most popular plan for comprehensive weekly oversight.',
+    description: 'Our most popular plan for comprehensive, twice monthly service. Featuring multi visit discount.',
     features: [
-      'Weekly interior/exterior checks',
-      'Detailed digital report with photos',
-      'Full systems check (HVAC, plumbing)',
-      'Vendor management access',
-      'Vehicle starting',
-      'Priority storm prep',
+      'Twice monthly interior/exterior checks',
+      'Detailed report with photos',
+      'Full systems check',
+      'Vendor management Access',
+      'Vehicle Starting',
+      'Priority Services',
     ],
     popular: true,
   },
   {
-    name: 'Seasonal Watch',
+    name: 'Custom Watch',
     price: 'Custom Quote',
-    frequency: 'tailored to your schedule',
-    description: 'Customized plans for extended absences.',
+    frequency: 'tailored to your needs',
+    description: 'Customized plans for extended absences',
     features: [
-      'Custom visit frequency',
-      'All Premium features included',
-      'Concierge service coordination',
-      'Departure & arrival preparation',
+      'Custom quote tailored to your needs',
     ],
     popular: false,
   },

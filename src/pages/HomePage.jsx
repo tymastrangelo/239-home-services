@@ -4,8 +4,8 @@ import Button from "../components/ui/Button";
 import { FaArrowRight, FaHome, FaKey, FaClipboardList, FaCheckCircle, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 // Placeholder for a beautiful local image
-import heroImage from "../assets/naples-hero.jpg";
-import aboutImage from "../assets/about-us-image.jpg"; // Add a new image for this section
+import heroImage from "../assets/marco-hero.jpg";
+import aboutImage from "../assets/logo/logo-1920x1080.png"; // use logo in place of random people image
 
 const HeroSection = () => {
   return (
@@ -16,7 +16,7 @@ const HeroSection = () => {
       }}
     >
       {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-brand-primary bg-opacity-60"></div>
+      <div className="absolute inset-0 bg-brand-primary bg-opacity-50"></div>
 
       <div
         className="relative w-full mx-auto max-w-screen-xl px-6 lg:px-8 flex flex-col items-center text-center -mt-16"
@@ -26,9 +26,9 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-4xl md:text-6xl font-bold font-serif leading-tight mb-4 max-w-4xl"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif leading-tight mb-4 max-w-4xl"
         >
-          Trusted Home Watch & Concierge Services for Peace of Mind
+          Trusted home watch, property management & concierge services for peace of mind
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -36,8 +36,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-lg md:text-xl mb-8 max-w-3xl"
         >
-          Serving Naples & Marco Island, we are your eyes and ears when you’re
-          away, ensuring your home is secure and cared for.
+          Serving Marco Island and South Naples, we are your eyes and ears when you are away, ensuring your peace of paradise is secure and cared for.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -80,10 +79,10 @@ const HomeAboutSection = () => {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-6">
-              Your Trusted Partner in Home Watch
+              <span className="block font-extrabold">Your investment is our priority.</span>
             </h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
-              As residents of Southwest Florida, we understand the unique needs of homeowners in Naples and Marco Island. Our mission is to be your eyes and ears, providing meticulous and professional home watch services so you can relax, knowing your home is in capable hands.
+              As full time residents of Southwest Florida, we understand the unique needs of property owners in Marco Island and South Naples. You worked hard and put in the time to have a place here. It’s time for you to relax and enjoy your time both here and away. We take care of the big stuff and the small stuff with an array of available services.
             </p>
             <Button to="/about" size="lg" variant="primary" className="flex items-center group">
               Learn More About Us
@@ -102,7 +101,7 @@ const ServicesSection = () => {
     {
       icon: <FaHome className="text-3xl text-brand-accent" />,
       title: "Comprehensive Home Watch",
-      description: "Scheduled interior and exterior checks with detailed digital reports after every visit."
+          description: "Scheduled interior and exterior checks with detailed reports after every visit."
     },
     {
       icon: <FaKey className="text-3xl text-brand-accent" />,
@@ -122,8 +121,8 @@ const ServicesSection = () => {
         <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-4">
           Our Services
         </motion.h2>
-        <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto mb-12">
-          We offer a comprehensive suite of services designed to give you complete peace of mind while you're away from your home.
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto mb-12">
+              We offer a comprehensive suite of services designed to give you complete peace of mind.
         </motion.p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {topServices.map((service, index) => (

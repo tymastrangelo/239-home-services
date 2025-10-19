@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // You can use the same hero image or a different one for this page
-import aboutHeroImage from "../assets/naples-hero.jpg"; 
-import aboutContentImage from "../assets/about-us-image.jpg";
+import aboutHeroImage from "../assets/marco-hero.jpg"; 
+import aboutContentImage from "../assets/logo/logo-1920x1080.png";
 
 const AboutPage = () => {
   return (
@@ -16,7 +16,7 @@ const AboutPage = () => {
             About Us
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
-            Learn about our commitment to providing exceptional home watch services in Southwest Florida.
+            Your trusted partner in home watch and property management. 239 Home Services was founded on the principles of trust, reliability and peace of mind. Rooted in the heart of Marco Island, our company is locally owned and operated by full-time residents who truly understand Florida living.
           </motion.p>
         </div>
       </section>
@@ -28,10 +28,10 @@ const AboutPage = () => {
             <img src={aboutContentImage} alt="A well-maintained home in Naples, Florida" className="w-full h-full object-cover" />
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 50 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }}>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-6">Your Trusted Partner in Home Watch</h2>
-            <p className="text-gray-600 mb-4 leading-relaxed">239 Home Services was founded on the principles of trust, reliability, and peace of mind. As residents of Southwest Florida ourselves, we understand the unique needs of homeowners in Naples and Marco Island. Whether you're a seasonal resident or traveling for business, leaving your home unattended can be a source of stress.</p>
-            <p className="text-gray-600 mb-4 leading-relaxed">Our mission is to be your eyes and ears, providing meticulous and professional home watch services. We are fully insured, and our team is dedicated to ensuring your property is safe, secure, and perfectly maintained in your absence. With 239 Home Services, you can relax, knowing your home is in capable hands.</p>
-            <p className="text-gray-600 leading-relaxed">We pride ourselves on clear communication, detailed reporting, and a personalized approach for every client. We don't just watch your home; we care for it as if it were our own.</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-6">Your trusted partner in home watch and property management</h2>
+            <p className="text-gray-600 mb-4 leading-relaxed">239 home services was founded on the principles of trust, reliability and peace of mind. Rooted in the heart of Marco Island, our company is locally owned and operated by full-time residents who truly understand Florida living. With family ties to the community dating back to the 1970s, we bring a deep appreciation for Florida’s unique lifestyle and the people who call it home.</p>
+            <p className="text-gray-600 mb-4 leading-relaxed">Our team combines decades of experience across real estate, property management, merchant marines, and the automotive industry. We offer a diverse skill set that ensures every detail of your property is handled with care, precision, and reliability. Whether it’s ensuring your property is maintained, keeping your cars running, checking your boats or providing trusted local guidance, we pride ourselves on delivering the personalized service only a true local can provide.</p>
+            <p className="text-gray-600 leading-relaxed">At the core of our business is a commitment to integrity, communication, and community. We treat every property as if it were our own — because here, you’re not just a client, you’re a neighbor.</p>
           </motion.div>
         </div>
       </section>

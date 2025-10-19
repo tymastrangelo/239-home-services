@@ -1,13 +1,13 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaHome, FaKey, FaClipboardList, FaExclamationTriangle, FaCar, FaBoxOpen } from "react-icons/fa";
-import servicesHeroImage from "../assets/naples-hero.jpg"; // You can use a different image if available
+import servicesHeroImage from "../assets/marco-hero.jpg"; // You can use a different image if available
 
 const services = [
   {
     icon: <FaHome className="text-4xl text-brand-accent" />,
     title: "Comprehensive Home Watch",
-    description: "Our core service involves scheduled, in-person visits to your property. We conduct a thorough interior and exterior inspection, checking for signs of water damage, pests, forced entry, and system malfunctions. You receive a detailed digital report with photos after every single visit."
+    description: "Our core service involves scheduled, in-person visits to your property. We conduct a thorough interior and exterior inspection, checking for signs of water damage, pests, forced entry, and system malfunctions. You receive a detailed report with photos after every visit."
   },
   {
     icon: <FaKey className="text-4xl text-brand-accent" />,
@@ -22,12 +22,12 @@ const services = [
   {
     icon: <FaExclamationTriangle className="text-4xl text-brand-accent" />,
     title: "Storm & Emergency Preparation",
-    description: "We offer pre-storm services to secure outdoor furniture and install shutters. Post-storm, we provide immediate assessments to check for damage and coordinate any necessary emergency repairs, protecting your investment when it matters most."
+    description: "Off season preparation: As part of our closing services option, we pre-prep your home in the off season for any potential storms. Post-storm, we provide assessments to check for damage and coordinate any necessary emergency repairs, protecting your investment when it matters most."
   },
   {
     icon: <FaCar className="text-4xl text-brand-accent" />,
     title: "Vehicle Care & Starting",
-    description: "Prevent dead batteries and flat-spotted tires. Our service includes starting and running your vehicles, checking fluid levels, and ensuring they are ready for your return. We can also arrange for professional detailing or servicing."
+    description: "Prevent dead batteries and flat-spotted tires. Our service includes starting and running your vehicles and ensuring they are ready for your return. We can also arrange for professional detailing or servicing."
   },
   {
     icon: <FaBoxOpen className="text-4xl text-brand-accent" />,
@@ -35,6 +35,8 @@ const services = [
     description: "Don't let mail pile up. We collect your mail, packages, and newspapers, bringing them inside to keep your home looking occupied and secure. We can also forward important items upon request."
   }
 ];
+
+// Concierge and Return sections will be rendered below the main list in a separate block
 
 const ServicesPage = () => {
   return (
@@ -64,6 +66,16 @@ const ServicesPage = () => {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      <section className="py-12 lg:py-16 bg-gray-50">
+        <div className="mx-auto max-w-screen-xl px-6 lg:px-8">
+          <h3 className="text-2xl font-bold text-brand-primary mb-4">Concierge Services</h3>
+          <p className="text-gray-600 mb-6 leading-relaxed">Our expansive available concierge services include, but are not limited to: Seasonal opening and closing of your property, boat relocation, pick up and drop off service to local FBO airports, assistance with shipping vehicles between properties. Leave your place as is and we’ll close it up for you. There isn’t much we can’t or won’t do.</p>
+
+          <h3 className="text-2xl font-bold text-brand-primary mb-4">Preparing for Your Return</h3>
+          <p className="text-gray-600 leading-relaxed">We make it like you never left with our opening services. Everything from property cleaning, pressure washing, vehicle preparation and detailing, placing outdoor furniture, ensuring storm shutters are removed, grocery shopping and more!</p>
         </div>
       </section>
     </div>
