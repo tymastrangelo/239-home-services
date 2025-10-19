@@ -34,6 +34,17 @@ const services = [
     title: "Package & Mail Management",
     description: "Don't let mail pile up. We collect your mail, packages, and newspapers, bringing them inside to keep your home looking occupied and secure. We can also forward important items upon request."
   }
+  ,
+  {
+    icon: <FaClipboardList className="text-4xl text-brand-accent" />,
+    title: "Concierge Services",
+    description: "Our expansive concierge options include seasonal opening/closing, boat relocation, pick-up/drop-off to local FBOs, assistance shipping vehicles between properties, and nearly any task to keep your property cared for."
+  },
+  {
+    icon: <FaHome className="text-4xl text-brand-accent" />,
+    title: "Preparing for Your Return",
+    description: "We make it like you never left: property cleaning, pressure washing, vehicle prep and detailing, placing outdoor furniture, removing storm shutters, grocery shopping and more."
+  }
 ];
 
 // Concierge and Return sections will be rendered below the main list in a separate block
@@ -69,15 +80,7 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      <section className="py-12 lg:py-16 bg-gray-50">
-        <div className="mx-auto max-w-screen-xl px-6 lg:px-8">
-          <h3 className="text-2xl font-bold text-brand-primary mb-4">Concierge Services</h3>
-          <p className="text-gray-600 mb-6 leading-relaxed">Our expansive available concierge services include, but are not limited to: Seasonal opening and closing of your property, boat relocation, pick up and drop off service to local FBO airports, assistance with shipping vehicles between properties. Leave your place as is and we’ll close it up for you. There isn’t much we can’t or won’t do.</p>
-
-          <h3 className="text-2xl font-bold text-brand-primary mb-4">Preparing for Your Return</h3>
-          <p className="text-gray-600 leading-relaxed">We make it like you never left with our opening services. Everything from property cleaning, pressure washing, vehicle preparation and detailing, placing outdoor furniture, ensuring storm shutters are removed, grocery shopping and more!</p>
-        </div>
-      </section>
+      {/* concierge and preparing-for-return are included above in the `services` array so they render as the same cards */}
     </div>
   );
 };
