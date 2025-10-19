@@ -43,8 +43,8 @@ const Header = () => {
         >
         <div className={`mx-auto max-w-screen-xl px-6 lg:px-8 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'py-0' : 'py-2'}`}>
           <div className="flex items-center gap-6">
-            <a href="tel:+2392930683" className="flex items-center gap-2 hover:text-brand-accent">
-              <FaPhone /> (239) 293-0683
+            <a href="tel:+1234567890" className="flex items-center gap-2 hover:text-brand-accent">
+              <FaPhone /> (123) 456-7890
             </a>
             <a href="mailto:contact@239homeservices.com" className="flex items-center gap-2 hover:text-brand-accent">
               <FaEnvelope /> contact@239homeservices.com

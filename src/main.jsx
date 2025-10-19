@@ -6,7 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <BrowserRouter basename="/239-home-services/">
+    {/* Use Vite's BASE_URL so the app works both on root deployments (Vercel) and on subpath deployments (GitHub Pages). */}
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
     </BrowserRouter>
   </React.StrictMode>
