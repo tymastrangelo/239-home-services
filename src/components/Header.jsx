@@ -46,8 +46,8 @@ const Header = () => {
             <a href="tel:+2395722025" className="flex items-center gap-2 hover:text-brand-accent">
               <FaPhone /> (239) 572-2025
             </a>
-            <a href="mailto:239homeservices@gmail.com" className="flex items-center gap-2 hover:text-brand-accent">
-              <FaEnvelope /> 239homeservices@gmail.com
+            <a href="mailto:info@239homeservices.com" className="flex items-center gap-2 hover:text-brand-accent">
+              <FaEnvelope /> info@239homeservices.com
             </a>
           </div>
           <span>

@@ -279,7 +279,7 @@ const ContactSection = () => {
               </li>
               <li className="flex items-center gap-4">
                 <FaEnvelope className="text-brand-accent text-xl" />
-                <a href="mailto:239homeservices@gmail.com" className="hover:text-brand-accent transition-colors">239homeservices@gmail.com</a>
+                <a href="mailto:info@239homeservices.com" className="hover:text-brand-accent transition-colors">info@239homeservices.com</a>
               </li>
               <li className="flex items-center gap-4">
                 <FaMapMarkerAlt className="text-brand-accent text-xl" />
