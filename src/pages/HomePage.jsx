@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Button from "../components/ui/Button";
 import { FaArrowRight, FaHome, FaKey, FaClipboardList, FaCheckCircle, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import { CONTACT, tel } from "../config/contact";
 
 // Placeholder for a beautiful local image
 import heroImage from "../assets/marco-hero.jpg";
@@ -273,10 +274,12 @@ const ContactSection = () => {
               Fill out the form and our team will get back to you within 24 hours. For immediate assistance, please call us.
             </p>
             <ul className="space-y-6 text-gray-700">
-              <li className="flex items-center gap-4">
-                <FaPhone className="text-brand-accent text-xl" />
-                <a href="tel:+2395722025" className="hover:text-brand-accent transition-colors">(239) 572-2025</a>
-              </li>
+              {CONTACT.phones.map(p => (
+                <li key={p.raw} className="flex items-center gap-4">
+                  <FaPhone className="text-brand-accent text-xl" />
+                  <a href={tel(p.raw)} aria-label={`Call ${p.display}`} className="hover:text-brand-accent transition-colors">{p.display}</a>
+                </li>
+              ))}
               <li className="flex items-center gap-4">
                 <FaEnvelope className="text-brand-accent text-xl" />
                 <a href="mailto:info@239homeservices.com" className="hover:text-brand-accent transition-colors">info@239homeservices.com</a>

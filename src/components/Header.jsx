@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"; // Keep useEffect for body s
 import logoImg from "../assets/logo/logo-1920x1080.png";
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { CONTACT, tel } from "../config/contact";
 
 const navItems = [
   { name: 'About', path: '/about' },
@@ -43,11 +44,13 @@ const Header = () => {
         >
         <div className={`mx-auto max-w-screen-xl px-6 lg:px-8 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'py-0' : 'py-2'}`}>
           <div className="flex items-center gap-6">
-            <a href="tel:+2395722025" className="flex items-center gap-2 hover:text-brand-accent">
-              <FaPhone /> (239) 572-2025
-            </a>
-            <a href="mailto:info@239homeservices.com" className="flex items-center gap-2 hover:text-brand-accent">
-              <FaEnvelope /> info@239homeservices.com
+            {CONTACT.phones.map((p) => (
+              <a key={p.raw} href={tel(p.raw)} aria-label={`Call ${p.display}`} className="flex items-center gap-2 hover:text-brand-accent">
+                <FaPhone /> {p.display}
+              </a>
+            ))}
+            <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-brand-accent">
+              <FaEnvelope /> {CONTACT.email}
             </a>
           </div>
           <span>

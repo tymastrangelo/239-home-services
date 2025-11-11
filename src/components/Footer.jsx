@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { CONTACT, tel } from '../config/contact';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
@@ -38,8 +39,13 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h4 className="font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-2 text-blue-100">
-              <li className="flex items-center justify-center md:justify-start gap-2"><FaPhone /><a href="tel:+2395722025" className="hover:text-brand-accent">(239) 572-2025</a></li>
-              <li className="flex items-center justify-center md:justify-start gap-2"><FaEnvelope /><a href="mailto:info@239homeservices.com" className="hover:text-brand-accent">info@239homeservices.com</a></li>
+              {CONTACT.phones.map(p => (
+                <li key={p.raw} className="flex items-center justify-center md:justify-start gap-2">
+                  <FaPhone />
+                  <a href={tel(p.raw)} className="hover:text-brand-accent" aria-label={`Call ${p.display}`}>{p.display}</a>
+                </li>
+              ))}
+              <li className="flex items-center justify-center md:justify-start gap-2"><FaEnvelope /><a href={`mailto:${CONTACT.email}`} className="hover:text-brand-accent">{CONTACT.email}</a></li>
             </ul>
             <div className="flex justify-center md:justify-start space-x-4 mt-6">
               <a href="#" aria-label="Facebook" className="text-2xl text-blue-100 hover:text-brand-accent"><FaFacebook /></a>
