@@ -30,7 +30,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif leading-tight mb-4 max-w-4xl"
         >
-          Trusted home watch, property management & concierge services for peace of mind
+          Trusted home watch, property management & concierge services for piece of mind
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ const ServicesSection = () => {
           Our Services
         </motion.h2>
             <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto mb-12">
-              We offer a comprehensive suite of services designed to give you complete peace of mind.
+              We offer a comprehensive suite of services designed to give you complete piece of mind.
         </motion.p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {topServices.map((service, index) => (
@@ -261,8 +261,8 @@ const ContactSection = () => {
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7 }} className="text-3xl md:text-4xl font-bold text-brand-primary font-serif mb-4">
             Get In Touch
           </motion.h2>
-          <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto">
-            Ready to secure your peace of mind? Contact us today for a free, no-obligation consultation.
+            <motion.p initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.7, delay: 0.2 }} className="text-gray-600 text-lg max-w-3xl mx-auto">
+            Ready to secure your piece of mind? Contact us today for a free, no-obligation consultation.
           </motion.p>
         </div>
 

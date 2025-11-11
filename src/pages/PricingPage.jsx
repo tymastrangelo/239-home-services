@@ -9,7 +9,7 @@ const pricingPlans = [
     name: 'Basic Watch',
     price: 'Starting at $75 per visit',
     frequency: 'per visit',
-    description: 'Ideal for regular monthly peace of mind',
+  description: 'Ideal for regular monthly piece of mind',
     features: [
       'Monthly interior/exterior checks',
       'Report with photos',
@@ -84,7 +84,7 @@ const PricingPage = () => {
         <div className="absolute inset-0 bg-brand-primary bg-opacity-70"></div>
         <div className="relative mx-auto max-w-screen-xl px-6 lg:px-8 text-center">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-4xl md:text-6xl font-bold font-serif">Transparent Pricing</motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">Find the perfect plan to protect your home and give you peace of mind.</motion.p>
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">Find the perfect plan to protect your home and give you piece of mind.</motion.p>
         </div>
       </section>
 
