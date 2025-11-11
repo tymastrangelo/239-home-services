@@ -30,7 +30,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="text-3xl md:text-4xl lg:text-5xl font-bold font-serif leading-tight mb-4 max-w-4xl"
         >
-          Trusted home watch, property management & concierge services for piece of mind
+          Trusted home watch, property management & concierge services for peace of mind
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-lg md:text-xl mb-8 max-w-3xl"
         >
-          Serving Marco Island and South Naples, we are your eyes and ears when you are away, ensuring your peace of paradise is secure and cared for.
+          Serving Marco Island and South Naples, we are your eyes and ears when you are away, ensuring your piece of paradise is secure and cared for.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
