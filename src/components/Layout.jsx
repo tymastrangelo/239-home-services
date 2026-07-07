@@ -1,5 +1,6 @@
 import React, { useLayoutEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -25,10 +26,16 @@ const Layout = () => {
   return (
     <>
       <Header />
-      <main className="flex-grow">
-        {/* The Outlet component renders the current route's component */}
+      {/* Keyed by pathname so each page mounts with a clean fade */}
+      <motion.main
+        key={location.pathname}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className="flex-grow"
+      >
         <Outlet />
-      </main>
+      </motion.main>
       <Footer />
     </>
   );

@@ -1,88 +1,105 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaKey, FaClipboardList, FaExclamationTriangle, FaCar, FaBoxOpen } from "react-icons/fa";
-import servicesHeroImage from "../assets/marco-hero.jpg"; // You can use a different image if available
+import {
+  LuHouse, LuKeyRound, LuWrench, LuUmbrella,
+  LuCarFront, LuMailbox, LuConciergeBell, LuSparkles,
+} from 'react-icons/lu';
+import PageHero from '../components/PageHero';
+import CtaBand from '../components/CtaBand';
+import { fadeUpDelayed } from '../lib/motion';
+import servicesHeroImage from '../assets/naples-hero.jpg';
 
-const services = [
+const serviceGroups = [
   {
-    icon: <FaHome className="text-4xl text-brand-accent" />,
-    title: "Comprehensive Home Watch",
-    description: "Our core service involves scheduled, in-person visits to your property. We conduct a thorough interior and exterior inspection, checking for signs of water damage, pests, forced entry, and system malfunctions. You receive a detailed report with photos after every visit."
+    heading: 'The core: watching your home',
+    services: [
+      {
+        icon: LuHouse,
+        title: 'Comprehensive Home Watch',
+        description: 'Scheduled, in-person visits to your property. We conduct a thorough interior and exterior inspection, checking for signs of water damage, pests, forced entry, and system malfunctions. You receive a detailed report with photos after every visit.',
+      },
+      {
+        icon: LuKeyRound,
+        title: 'Keyholder & Access Services',
+        description: 'As your registered keyholder, we provide secure and reliable access for vendors, contractors, deliveries, or guests. No hidden keys and no unsecured access. Necessary work and arrivals are managed professionally.',
+      },
+      {
+        icon: LuWrench,
+        title: 'Vendor Management',
+        description: 'Leverage our local network of trusted professionals. We coordinate and oversee pool maintenance, landscapers, pest control, and cleaners, making sure quality work is completed on time and to your standards.',
+      },
+      {
+        icon: LuUmbrella,
+        title: 'Storm & Emergency Preparation',
+        description: 'As part of our closing services, we pre-prep your home in the off-season for potential storms. Post-storm, we assess for damage and coordinate any necessary emergency repairs, protecting your investment when it matters most.',
+      },
+    ],
   },
   {
-    icon: <FaKey className="text-4xl text-brand-accent" />,
-    title: "Keyholder & Access Services",
-    description: "As your registered keyholder, we provide secure and reliable access for vendors, contractors, deliveries, or guests. We eliminate the need to hide keys or grant unsecured access, ensuring your property remains safe while necessary work or arrivals are managed professionally."
+    heading: 'Beyond the watch: concierge & seasonal',
+    services: [
+      {
+        icon: LuCarFront,
+        title: 'Vehicle Care & Starting',
+        description: 'Prevent dead batteries and flat-spotted tires. We start and run your vehicles and make sure they are ready for your return. We can also arrange professional detailing or servicing.',
+      },
+      {
+        icon: LuMailbox,
+        title: 'Package & Mail Management',
+        description: "Don't let mail pile up. We collect your mail, packages, and newspapers, bringing them inside to keep your home looking occupied and secure. Important items can be forwarded on request.",
+      },
+      {
+        icon: LuConciergeBell,
+        title: 'Concierge Services',
+        description: 'Seasonal opening and closing, boat relocation, pick-up and drop-off at local FBOs, assistance shipping vehicles between properties, and nearly any task that keeps your property cared for.',
+      },
+      {
+        icon: LuSparkles,
+        title: 'Preparing for Your Return',
+        description: 'We make it like you never left: property cleaning, pressure washing, vehicle prep and detailing, placing outdoor furniture, removing storm shutters, grocery shopping, and more.',
+      },
+    ],
   },
-  {
-    icon: <FaClipboardList className="text-4xl text-brand-accent" />,
-    title: "Vendor Management",
-    description: "Leverage our local network of trusted professionals. We can coordinate and oversee service providers for you, including pool maintenance, landscapers, pest control, and cleaners. We ensure quality work is completed on time and to your standards."
-  },
-  {
-    icon: <FaExclamationTriangle className="text-4xl text-brand-accent" />,
-    title: "Storm & Emergency Preparation",
-    description: "Off season preparation: As part of our closing services option, we pre-prep your home in the off season for any potential storms. Post-storm, we provide assessments to check for damage and coordinate any necessary emergency repairs, protecting your investment when it matters most."
-  },
-  {
-    icon: <FaCar className="text-4xl text-brand-accent" />,
-    title: "Vehicle Care & Starting",
-    description: "Prevent dead batteries and flat-spotted tires. Our service includes starting and running your vehicles and ensuring they are ready for your return. We can also arrange for professional detailing or servicing."
-  },
-  {
-    icon: <FaBoxOpen className="text-4xl text-brand-accent" />,
-    title: "Package & Mail Management",
-    description: "Don't let mail pile up. We collect your mail, packages, and newspapers, bringing them inside to keep your home looking occupied and secure. We can also forward important items upon request."
-  }
-  ,
-  {
-    icon: <FaClipboardList className="text-4xl text-brand-accent" />,
-    title: "Concierge Services",
-    description: "Our expansive concierge options include seasonal opening/closing, boat relocation, pick-up/drop-off to local FBOs, assistance shipping vehicles between properties, and nearly any task to keep your property cared for."
-  },
-  {
-    icon: <FaHome className="text-4xl text-brand-accent" />,
-    title: "Preparing for Your Return",
-    description: "We make it like you never left: property cleaning, pressure washing, vehicle prep and detailing, placing outdoor furniture, removing storm shutters, grocery shopping and more."
-  }
 ];
 
-// Concierge and Return sections will be rendered below the main list in a separate block
+const ServicesPage = () => (
+  <div className="bg-white">
+    <PageHero
+      image={servicesHeroImage}
+      eyebrow="Services"
+      title="Everything an empty home needs, handled"
+    >
+      From scheduled inspections to storm prep to stocking the fridge before you land. One local team, one point of contact.
+    </PageHero>
 
-const ServicesPage = () => {
-  return (
-    <div className="bg-white">
-      {/* Page Header */}
-      <section className="relative py-20 md:py-32 bg-cover bg-center text-white" style={{ backgroundImage: `url(${servicesHeroImage})` }}>
-        <div className="absolute inset-0 bg-brand-primary bg-opacity-70"></div>
-        <div className="relative mx-auto max-w-screen-xl px-6 lg:px-8 text-center">
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-4xl md:text-6xl font-bold font-serif">
-            Our Services
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="mt-4 text-lg md:text-xl max-w-3xl mx-auto">
-            A complete suite of services to protect and maintain your home.
-          </motion.p>
+    {serviceGroups.map((group, groupIndex) => (
+      <section key={group.heading} className={`py-16 lg:py-24 ${groupIndex % 2 ? 'bg-sand' : 'bg-white'}`}>
+        <div className="mx-auto max-w-content px-6 lg:px-8">
+          <motion.h2 {...fadeUpDelayed(0)} className="font-display text-2xl md:text-3xl mb-12">
+            {group.heading}
+          </motion.h2>
+          <div className="grid md:grid-cols-2 gap-x-14 gap-y-12">
+            {group.services.map((service, i) => (
+              <motion.div key={service.title} {...fadeUpDelayed(i * 0.08)} className="flex items-start gap-5">
+                <span className="flex items-center justify-center w-12 h-12 rounded-sm bg-ink text-brass shrink-0">
+                  <service.icon className="w-6 h-6" strokeWidth={1.75} />
+                </span>
+                <div>
+                  <h3 className="font-display text-xl mb-2.5">{service.title}</h3>
+                  <p className="text-ink/65 leading-relaxed">{service.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
+    ))}
 
-      {/* Detailed Services List */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-screen-xl px-6 lg:px-8 grid md:grid-cols-2 gap-8">
-          {services.map((service, index) => (
-            <motion.div key={index} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ amount: 0.3 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="flex items-start gap-6 bg-gray-50 p-8 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-3 transition-all duration-300">
-              <div className="mt-1">{service.icon}</div>
-              <div>
-                <h3 className="text-xl font-bold text-brand-primary mb-2">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* concierge and preparing-for-return are included above in the `services` array so they render as the same cards */}
-    </div>
-  );
-};
+    <CtaBand
+      title="Don't see it on the list? Ask."
+      body="If it keeps your property cared for, it's probably something we do. Tell us what you need and we'll build it into your plan."
+    />
+  </div>
+);
 
 export default ServicesPage;

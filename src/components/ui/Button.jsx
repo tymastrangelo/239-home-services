@@ -12,16 +12,19 @@ const Button = ({
   type = 'button',
   ...props
 }) => {
-  const baseStyles = 'inline-block font-semibold rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2';
+  const baseStyles = 'inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-wide rounded-sm transition-colors duration-200';
 
   const variantStyles = {
-    primary: 'bg-brand-primary text-white hover:bg-[#063a6b] focus:ring-brand-primary shadow-md',
-    accent: 'bg-brand-accent text-white hover:bg-[#e89c00] focus:ring-brand-accent shadow-md',
+    primary: 'bg-ink text-white hover:bg-ink-soft',
+    accent: 'bg-brass text-ink-deep hover:bg-brass-dark hover:text-white',
+    // for use on dark/photo backgrounds
+    ghost: 'border border-white/60 text-white hover:bg-white/10',
+    outline: 'border border-ink/30 text-ink hover:border-ink hover:bg-ink hover:text-white',
   };
 
   const sizeStyles = {
     md: 'px-5 py-2.5 text-sm',
-    lg: 'px-6 py-3 text-base',
+    lg: 'px-7 py-3.5 text-base',
   };
 
   const combinedClassName = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`;

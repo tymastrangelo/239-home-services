@@ -1,115 +1,129 @@
-import React, { useState, useEffect } from "react"; // Keep useEffect for body scroll lock
-// Import logo asset so Vite can resolve it during dev (enables HMR)
-import logoImg from "../assets/logo/logo-1920x1080.png";
+import React, { useState, useEffect } from "react";
 import { FaPhone, FaEnvelope, FaBars, FaTimes } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { CONTACT, tel } from "../config/contact";
+import Button from "./ui/Button";
+import markBrass from "../assets/logo/mark-brass.png";
+import markLight from "../assets/logo/mark-light.png";
 
 const navItems = [
   { name: 'About', path: '/about' },
   { name: 'Services', path: '/services' },
   { name: 'Pricing', path: '/pricing' },
-  { name: 'Contact', path: '/#contact' },
 ];
+
+const Wordmark = () => (
+  <Link to="/" className="flex items-center gap-3 shrink-0" aria-label="239 Home Services home">
+    <img src={markBrass} alt="" className="h-10 w-auto" />
+    <span className="font-display text-2xl leading-none text-ink">
+      <span className="text-brass">239</span> Home Services
+    </span>
+  </Link>
+);
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Set isScrolled to true if user scrolls more than 10px
-      setIsScrolled(window.scrollY > 10);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Effect to prevent scrolling when the mobile menu is open
+  // Prevent scrolling when the mobile menu is open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
   }, [isMenuOpen]);
 
   return (
     <>
-      <header className="sticky top-0 z-40 shadow-md">
-        <div
-          className={`hidden md:block bg-gray-100 text-brand-primary text-sm transition-all duration-300 ease-in-out overflow-hidden ${
-            isScrolled ? "max-h-0" : "max-h-16"
-          }`}
-        >
-        <div className={`mx-auto max-w-screen-xl px-6 lg:px-8 flex justify-between items-center transition-all duration-300 ${isScrolled ? 'py-0' : 'py-2'}`}>
+      {/* Utility bar: not sticky, scrolls away naturally so the header never changes height */}
+      <div className="hidden md:block bg-ink text-mist">
+        <div className="mx-auto max-w-content px-6 lg:px-8 py-2 flex justify-between items-center font-mono text-xs tracking-wider">
           <div className="flex items-center gap-6">
             {CONTACT.phones.map((p) => (
-              <a key={p.raw} href={tel(p.raw)} aria-label={`Call ${p.display}`} className="flex items-center gap-2 hover:text-brand-accent">
-                <FaPhone /> {p.display}
+              <a key={p.raw} href={tel(p.raw)} aria-label={`Call ${p.display}`} className="flex items-center gap-2 hover:text-white transition-colors">
+                <FaPhone className="text-brass" /> {p.display}
               </a>
             ))}
-            <a href={`mailto:${CONTACT.email}`} className="flex items-center gap-2 hover:text-brand-accent">
-              <FaEnvelope /> {CONTACT.email}
+            <a href={`mailto:${CONTACT.email}`} className="hidden lg:flex items-center gap-2 hover:text-white transition-colors">
+              <FaEnvelope className="text-brass" /> {CONTACT.email}
             </a>
           </div>
-          <span>
-            Locally Owned & Fully Insured
-          </span>
+          <span className="uppercase">Locally owned · Fully insured</span>
         </div>
       </div>
-      <div className="bg-brand-primary">
-        <nav
-          className="mx-auto max-w-screen-xl px-6 lg:px-8 py-3 flex justify-between items-center"
-        >
-          <Link to="/" className="flex items-center gap-4">
-            <span className="font-bold text-2xl text-white">239 Home Services</span>
-          </Link>
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+
+      <header className={`sticky top-0 z-40 bg-white ${isScrolled ? 'shadow-md' : ''} transition-shadow duration-300`}>
+        <nav className="mx-auto max-w-content px-6 lg:px-8 py-4 flex justify-between items-center">
+          <Wordmark />
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
-              <Link 
-                key={item.name} to={item.path} 
-                className="font-semibold text-white hover:text-brand-accent transition-colors duration-300"
+              <NavLink
+                key={item.name}
+                to={item.path}
+                className={({ isActive }) =>
+                  `text-sm font-semibold tracking-wide transition-colors duration-200 ${
+                    isActive ? 'text-brass' : 'text-ink hover:text-brass'
+                  }`
+                }
               >
                 {item.name}
-              </Link>
+              </NavLink>
             ))}
+            <Button to="/#contact" variant="accent" size="md">Request a consultation</Button>
           </div>
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <button onClick={() => setIsMenuOpen(true)} aria-label="Open menu" className="p-2 -mr-2" >
-              <FaBars className="text-2xl text-white" />
+            <button onClick={() => setIsMenuOpen(true)} aria-label="Open menu" className="p-2 -mr-2">
+              <FaBars className="text-2xl text-ink" />
             </button>
           </div>
         </nav>
-      </div>
-    </header>
+      </header>
 
-    {/* Mobile Menu Overlay */}
-    <div
-      className={`fixed inset-0 bg-brand-primary/95 backdrop-blur-sm z-50 transform ${
-        isMenuOpen ? "translate-x-0" : "translate-x-full"
-      } transition-transform duration-300 ease-in-out md:hidden`}
-    >
-      <div className="flex justify-end p-6">
-        <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
-          <FaTimes className="text-3xl text-white" />
-        </button>
-      </div>
-      <nav className="flex flex-col items-center justify-center h-full -mt-16 space-y-8">
-        {navItems.map((item) => (
+      {/* Mobile menu overlay */}
+      <div
+        className={`fixed inset-0 bg-ink-deep/95 backdrop-blur-sm z-50 transform ${
+          isMenuOpen ? "translate-x-0" : "translate-x-full"
+        } transition-transform duration-300 ease-in-out md:hidden`}
+      >
+        <div className="flex justify-between items-center p-6">
+          <span className="flex items-center gap-3">
+            <img src={markLight} alt="" className="h-8 w-auto" />
+            <span className="font-display text-xl text-white"><span className="text-brass">239</span> Home Services</span>
+          </span>
+          <button onClick={() => setIsMenuOpen(false)} aria-label="Close menu">
+            <FaTimes className="text-3xl text-white" />
+          </button>
+        </div>
+        <nav className="flex flex-col items-center justify-center h-full -mt-24 space-y-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              to={item.path}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-white font-display text-3xl hover:text-brass transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
           <Link
-            key={item.name}
-            to={item.path}
-            onClick={() => setIsMenuOpen(false)} // Close menu on link click
-            className="text-white text-3xl font-semibold hover:text-brand-accent"
+            to="/#contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="text-brass font-display text-3xl hover:text-white transition-colors"
           >
-            {item.name}
+            Contact
           </Link>
-        ))}
-      </nav>
-    </div>
+          <div className="pt-6 flex flex-col items-center gap-3 font-mono text-sm text-mist">
+            {CONTACT.phones.map((p) => (
+              <a key={p.raw} href={tel(p.raw)} className="flex items-center gap-2">
+                <FaPhone className="text-brass" /> {p.display}
+              </a>
+            ))}
+          </div>
+        </nav>
+      </div>
     </>
   );
 };

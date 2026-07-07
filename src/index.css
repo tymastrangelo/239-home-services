@@ -1,9 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-  @apply bg-white text-gray-800 font-sans;
+  @apply bg-white text-ink font-sans antialiased;
+}
+
+::selection {
+  @apply bg-brass/30 text-ink;
+}
+
+/* Visible focus for keyboard users, quiet otherwise */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  @apply outline-none ring-2 ring-brass ring-offset-2 ring-offset-white;
+}
+
+@layer components {
+  /* mono eyebrow label used across sections */
+  .eyebrow {
+    @apply font-mono text-xs tracking-[0.2em] uppercase;
+  }
 }
