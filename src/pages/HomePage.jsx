@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Button from "../components/ui/Button";
@@ -11,8 +11,10 @@ import {
 } from "react-icons/lu";
 
 import heroImage from "../assets/marco-hero.jpg";
+import canalImage from "../assets/canal-homes.jpg";
+import duskBeachImage from "../assets/dusk-beach.jpg";
+import duskHomeImage from "../assets/dusk-home.jpg";
 import aboutImage from "../assets/about-us-image.jpg";
-import coastImage from "../assets/naples-hero.jpg";
 
 /* ---------------------------------- Hero --------------------------------- */
 
@@ -77,9 +79,28 @@ const VisitReportCard = () => {
   );
 };
 
-const HeroSection = () => (
+const heroSlides = [heroImage, canalImage, duskBeachImage];
+
+const HeroSection = () => {
+  const [slide, setSlide] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const id = setInterval(() => setSlide(s => (s + 1) % heroSlides.length), 7000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
   <section className="relative bg-ink text-white overflow-hidden">
-    <img src={heroImage} alt="" aria-hidden="true" className="absolute inset-0 w-full h-full object-cover" />
+    {heroSlides.map((img, i) => (
+      <img
+        key={img}
+        src={img}
+        alt=""
+        aria-hidden="true"
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2500ms] ease-in-out ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+      />
+    ))}
     <div className="absolute inset-0 bg-gradient-to-r from-ink-deep/95 via-ink-deep/75 to-ink-deep/30"></div>
     <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink-deep/80 to-transparent"></div>
 
@@ -127,7 +148,8 @@ const HeroSection = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ---------------------------- While you're away --------------------------- */
 
@@ -385,8 +407,8 @@ const TeamSection = () => (
         <motion.div {...fadeUp} className="relative order-2 lg:order-1">
           <div className="absolute -bottom-4 -left-4 w-full h-full border border-brass/50 rounded-sm" aria-hidden="true"></div>
           <img
-            src={coastImage}
-            alt="Aerial view of the Southwest Florida coastline"
+            src={duskHomeImage}
+            alt="A Southwest Florida home at dusk"
             className="relative w-full h-full object-cover rounded-sm shadow-xl aspect-[4/3]"
           />
         </motion.div>

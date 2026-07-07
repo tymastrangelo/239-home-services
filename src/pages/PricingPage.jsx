@@ -5,7 +5,7 @@ import Button from '../components/ui/Button';
 import PageHero from '../components/PageHero';
 import CtaBand from '../components/CtaBand';
 import { fadeUp, fadeUpDelayed } from '../lib/motion';
-import pricingHeroImage from '../assets/marco-hero.jpg';
+import pricingHeroImage from '../assets/dusk-beach.jpg';
 
 const pricingPlans = [
   {

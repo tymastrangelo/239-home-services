@@ -7,7 +7,7 @@ import {
 import PageHero from '../components/PageHero';
 import CtaBand from '../components/CtaBand';
 import { fadeUpDelayed } from '../lib/motion';
-import servicesHeroImage from '../assets/naples-hero.jpg';
+import servicesHeroImage from '../assets/canal-homes.jpg';
 
 const serviceGroups = [
   {
